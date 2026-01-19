@@ -1,0 +1,7 @@
+paddlepaddle
+paddleocr
+ultralytics
+pdf2image
+rapidfuzz
+opencv-python
+numpy
