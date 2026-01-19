@@ -1,68 +1,84 @@
 # Convolve4.0-GenAI-Track
-Intelligent Document AI for Field Extraction (IDFC FIRST Bank Track)
-1. Project Overview
-This repository contains an end-to-end Generative AI solution designed to extract structured information from diverse tractor loan invoices and quotations. The system is built to handle:
+🚜 Intelligent Document AI for Field Extraction (IDFC FIRST Bank Track)
+📌 Project Overview
+This project is an end-to-end Generative AI solution built for Convolve 4.0. It automates the extraction of critical data from tractor loan quotations and invoices, supporting multiple languages and complex layouts. 
 
-Multilingual Documents: English, Hindi, and Gujarati.
+🛠️ Tech Stack & Architecture
+We have designed a Low-Cost, High-Accuracy Pipeline using:
 
-Complex Layouts: Scanned PDFs, handwritten text, and varied document structures.
 
-Visual Markers: Automated detection of Dealer Signatures and Stamps.
+OCR Layer: PaddleOCR (Superior support for Hindi, Gujarati, and English) 
++2
 
-2. Proposed Architecture
-We utilize a Hybrid Vision-Language Pipeline to ensure high accuracy (≥95% DLA) while maintaining low inference costs.
 
-Pipeline Workflow:
-Pre-processing: PDF conversion to high-resolution images using pdf2image.
+Vision Layer: YOLOv8 (For precise Signature and Stamp detection) 
 
-Visual Marker Detection (YOLOv8): A dedicated Object Detection model identifies the bounding boxes for Signature and Stamp.
 
-Multilingual OCR (PaddleOCR): We use PaddleOCR's multilingual model to extract text from vernacular regions (Hindi/Gujarati). It performs superiorly on handwritten and low-quality scans.
+Logic Layer: RapidFuzz & Regex (For data validation and cleaning) 
++2
 
-Field Extraction Logic:
+🔄 Workflow:
 
-Dealer Name: Extracted using OCR and verified via Fuzzy Matching (Levenshtein Distance) against a master list.
+Ingestion: Converts PDF to high-res images. 
 
-Model & HP: Identified through Regex patterns and exact string matching.
 
-Asset Cost: Cleaned using numeric parsing to remove currency symbols and commas.
+Detection: YOLO identifies Signatures and Stamps. 
 
-Post-processing: Confidence scoring and JSON formatting.
 
-3. Key Features
-Language Agnostic: Built-in support for regional Indian languages.
+Extraction: OCR reads vernacular and English text. 
++1
 
-Cost Optimized: Unlike heavy LLM APIs (GPT-4), our local SLM/OCR approach keeps the cost under $0.002 per document.
 
-High Precision: Uses RapidFuzz for dealer name validation to handle minor OCR misspellings.
+Reasoning: Fuzzy matching ensures Dealer names match the master file (≥90%). 
++1
 
-4. Performance & Cost Analysis
-Document Level Accuracy (DLA): Targetting ≥95%.
+📊 Performance Metrics
 
-Average Latency: ~3.5 seconds per page.
+Document Level Accuracy (DLA): Target ≥95% 🎯 
 
-Estimated Inference Cost:
 
-Local GPU/CPU: $0.00 (No API costs).
+Processing Time: < 30 seconds per document ⚡ 
 
-Cloud Scaled: ~$0.002 per document (Computation only).
 
-5. Repository Structure
+Inference Cost: < $0.01 per document (Budget Friendly!) 💰 
+
+📁 Repository Structure
 Plaintext
 
-├── executable.py          # Main entry point for extraction
-├── requirements.txt       # Dependencies (PaddleOCR, Ultralytics, etc.)
-├── README.md              # Project documentation
-├── weights/               # Trained YOLO weights for Signature/Stamp
-├── utils/                 # Helper scripts for OCR and Cleanup
-└── sample_output/         # Sample result.json
-6. Installation & Usage
-Clone the repo:
+├── executable.py          # 🚀 Main entry point for extraction
+├── requirements.txt       # 📦 Project dependencies
+├── README.md              # 📖 Documentation (You are here!)
+├── weights/               # 🧠 Trained YOLO model weights
+├── utils/                 # 🔧 Helper scripts (OCR, cleanup)
+└── sample_output/         # 📄 sample result.json
+📝 Output Format (JSON)
+The system outputs a structured JSON for every document:
+
+JSON
+
+{
+  "doc_id": "invoice_001",
+  "fields": {
+    "dealer_name": "ABC Tractors Pvt Ltd",
+    "model_name": "Mahindra 575 DI",
+    "horse_power": 50,
+    "asset_cost": 525000,
+    "signature": {"present": true, "bbox": [100, 200, 300, 250]},
+    "stamp": {"present": true, "bbox": [400, 500, 500, 550]}
+  },
+  "confidence": 0.96,
+  "processing_time_sec": 3.8,
+  "cost_estimate_usd": 0.002
+}
+
+
+🚀 Installation & Usage
+Clone the Repo:
 
 Bash
 
-git clone https://github.com/[jamuna9495]/IDFC-GenAI-Solution.git
-Install Dependencies:
+git clone https://github.com/your-username/idfc-genai-track.git
+Install Requirements:
 
 Bash
 
@@ -71,10 +87,12 @@ Run Extraction:
 
 Bash
 
-python executable.py --input ./test_docs --output ./result.json
-7. Team Details
-Track: Generative AI – IDFC FIRST Bank (Convolve 4.0)
+python executable.py
+👥 Team Details
+Event: Convolve 4.0 - Generative AI Track
 
-Team Members: [jamuna.k ]
+Team: [sunshine]
 
-Institutes: [SSM institute of engineering and technology college,Dindigul,Tamil nadu]
+Members: jamuna.k
+
+⭐ Built with passion for IDFC FIRST Bank & IIT Guwahati.
