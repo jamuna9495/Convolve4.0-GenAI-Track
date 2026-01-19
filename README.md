@@ -97,3 +97,15 @@ Team: [sunshine]
 Members: jamuna.k
 
 ⭐ Built with passion for IDFC FIRST Bank & IIT Guwahati.
+
+## 📐 System Architecture
+
+Our solution utilizes a modular pipeline to ensure high accuracy and low latency:
+
+![Architecture Diagram](https://https://github.com/jamuna9495/Convolve4.0-GenAI-Track.git.png)
+
+1. [cite_start]**Document Ingestion**: Converts multi-page PDFs into analyzed representations.
+2. [cite_start]**Visual Detection**: Uses YOLOv8 to identify dealer signatures and stamps.
+3. [cite_start]**Textual Understanding**: Employs PaddleOCR for language-agnostic extraction (Hindi, Gujarati, English).
+4. [cite_start]**Data Normalization**: Applies fuzzy matching for dealer names and exact numeric matching for HP and Cost[cite: 12, 33, 77].
+5. [cite_start]**Output**: Generates a structured JSON with confidence scores and processing metrics [cite: 93, 104-106].
