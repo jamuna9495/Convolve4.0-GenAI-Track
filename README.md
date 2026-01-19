@@ -77,7 +77,7 @@ Clone the Repo:
 
 Bash
 
-git clone https://github.com/your-username/idfc-genai-track.git
+git clone https://github.com/jamuna9495/idfc-genai-track.git
 Install Requirements:
 
 Bash
