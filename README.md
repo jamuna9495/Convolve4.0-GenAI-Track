@@ -1,13 +1,63 @@
 # Convolve4.0-GenAI-Track
 
-🚜 Intelligent Document AI for Field Extraction (IDFC FIRST Bank Track)📌 Project OverviewThis project is an end-to-end Generative AI solution built for Convolve 4.0. It automates the extraction of critical data from tractor loan quotations and invoices, supporting multiple languages (English, Hindi, Gujarati) and complex semi-structured layouts. 1111+2🛠️ Tech Stack & ArchitectureWe have designed a Low-Cost, High-Accuracy Pipeline using a hybrid Vision-Language approach:OCR Layer: PaddleOCR (Superior multilingual support for vernacular scripts like Hindi and Gujarati). 2222+2Vision Layer: YOLOv8 (For precise detection of Signatures and Stamps). 3333+1Logic Layer: RapidFuzz & Regex (For data validation, fuzzy matching, and numeric cleaning). 4444+2🔄 Workflow Pipeline:Ingestion: PDF to high-resolution image conversion using pdf2image. 5Detection: YOLOv8 identifies bounding boxes for Signatures and Stamps. 6666+1Extraction: Multilingual OCR extracts raw text from digital and handwritten regions. 7777+1Reasoning: Fuzzy matching ensures Dealer names match the master file with $\ge 90\%$ accuracy. 8888+1📊 Performance MetricsDocument Level Accuracy (DLA): Target $\ge 95\%$ 🎯 9999+1Processing Time: $< 30$ seconds per document ⚡ 10Inference Cost: $< \$0.01$ per document (CPU Optimized) 💰 11📁 Repository StructurePlaintext├── executable.py          # 🚀 Main entry point for extraction
+🚜 Intelligent Document AI for Field Extraction (IDFC FIRST Bank Track)
+📌 Project Overview
+This project is an end-to-end Generative AI solution built for Convolve 4.0. It automates the extraction of critical data from tractor loan quotations and invoices, supporting multiple languages and complex layouts. 
+
+🛠️ Tech Stack & Architecture
+We have designed a Low-Cost, High-Accuracy Pipeline using:
+
+
+OCR Layer: PaddleOCR (Superior support for Hindi, Gujarati, and English) 
++2
+
+
+Vision Layer: YOLOv8 (For precise Signature and Stamp detection) 
+
+
+Logic Layer: RapidFuzz & Regex (For data validation and cleaning) 
++2
+
+🔄 Workflow:
+
+Ingestion: Converts PDF to high-res images. 
+
+
+Detection: YOLO identifies Signatures and Stamps. 
+
+
+Extraction: OCR reads vernacular and English text. 
++1
+
+
+Reasoning: Fuzzy matching ensures Dealer names match the master file (≥90%). 
++1
+
+📊 Performance Metrics
+
+Document Level Accuracy (DLA): Target ≥95% 🎯 
+
+
+Processing Time: < 30 seconds per document ⚡ 
+
+
+Inference Cost: < $0.01 per document (Budget Friendly!) 💰 
+
+📁 Repository Structure
+Plaintext
+
+├── executable.py          # 🚀 Main entry point for extraction
 ├── requirements.txt       # 📦 Project dependencies
-├── README.md              # 📖 Documentation
-├── weights/               # 🧠 Trained YOLO model weights (.pt files)
-├── utils/                 # 🔧 Helper modules (OCR helpers, validators)
+├── README.md              # 📖 Documentation (You are here!)
+├── weights/               # 🧠 Trained YOLO model weights
+├── utils/                 # 🔧 Helper scripts (OCR, cleanup)
 └── sample_output/         # 📄 sample result.json
-12📝 Output Format (JSON)The system outputs a structured JSON for every document including confidence scores and latency:
-JSON{
+📝 Output Format (JSON)
+The system outputs a structured JSON for every document:
+
+JSON
+
+{
   "doc_id": "invoice_001",
   "fields": {
     "dealer_name": "ABC Tractors Pvt Ltd",
@@ -20,8 +70,30 @@ JSON{
   "confidence": 0.96,
   "processing_time_sec": 3.8,
   "cost_estimate_usd": 0.002
-       }
-13🚀 Installation & UsageClone the Repo:Bashgit clone https://github.com/jamuna9495/Convolve4.0-GenAI-Track.git
-Install Requirements:Bashpip install -r requirements.txt
-Run Extraction:Bashpython executable.py
-👥 Team DetailsEvent: Convolve 4.0 - Generative AI TrackOrganization: IIT Guwahati & IDFC FIRST Bank 14Members: [jamuna.k]⭐ Built for accuracy, efficiency, and scale.
+}
+
+
+🚀 Installation & Usage
+Clone the Repo:
+
+Bash
+
+git clone https://github.com/jamuna9495/idfc-genai-track.git
+Install Requirements:
+
+Bash
+
+pip install -r requirements.txt
+Run Extraction:
+
+Bash
+
+python executable.py
+👥 Team Details
+Event: Convolve 4.0 - Generative AI Track
+
+Team: [sunshine]
+
+Members: jamuna.k
+
+⭐ Built with passion for IDFC FIRST Bank & IIT Guwahati.
